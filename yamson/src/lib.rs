@@ -86,3 +86,26 @@ pub fn json_to_yaml(
 
     Ok(yaml_content)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn invalid_yaml() {
+        let invalid_yaml_content = r#"name : Shreyash: age: 49"#;
+        let output_file = "invalid.yaml";
+
+        let result = yaml_to_json(invalid_yaml_content, output_file);
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn invalid_json() {
+        let invalid_json_content = r#"{"name": Shreyash, "age": 49}"#;
+        let output_file = "invalid.json";
+
+        let result = json_to_yaml(invalid_json_content, output_file);
+        assert!(result.is_err());
+    }
+}
