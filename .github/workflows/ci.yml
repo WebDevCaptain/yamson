@@ -10,6 +10,9 @@ on:
     branches:
       - main
 
+env:
+  RUST_BACKTRACE: 1
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -27,3 +30,28 @@ jobs:
 
       - name: Run linter
         uses: cargo clippy --workspace --all-targets -- -D warnings
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout yamson code
+        uses: actions/checkout@v4
+
+      - name: Install rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Run tests
+        run: cargo test --workspace --all-targets
+
+  build:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout yamson code
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build yamson
+        run: cargo build --workspace --all-targets
