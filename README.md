@@ -1,5 +1,7 @@
 # Yamson: JSON-YAML converter
 
+[![CI](https://github.com/WebDevCaptain/yamson/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/WebDevCaptain/yamson/actions/workflows/ci.yml)
+
 Yamson is structured as a workspace with `yamson` (core functionality) and `yamson-cli` (command line interface to test the core functionality).
 
 ## Features
