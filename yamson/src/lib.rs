@@ -1,3 +1,8 @@
+//! Yamson: JSON <---> YAML converter
+//!
+//! Yamson provides utility functions to convert between JSON and YAML formats.
+//! It uses Serde for serialization and Deserialization, along with `serde_json` and `serde_yaml` crates.
+
 use serde_json::Value as JsonValue;
 use serde_yaml::Value as YamlValue;
 use std::fs;
@@ -26,7 +31,10 @@ use std::fs;
 ///
 /// # Errors
 /// Returns an error if the YAML content is invalid or if the output file cannot be written to
-pub fn yaml_to_json(yaml_content: &str, out_file: &str) -> Result<(), Box<dyn std::error::Error>> {
+pub fn yaml_to_json(
+    yaml_content: &str,
+    out_file: &str,
+) -> Result<String, Box<dyn std::error::Error>> {
     // Parse
     let yaml_value: YamlValue = serde_yaml::from_str(yaml_content)?;
 
@@ -34,9 +42,9 @@ pub fn yaml_to_json(yaml_content: &str, out_file: &str) -> Result<(), Box<dyn st
     let json_content = serde_json::to_string_pretty(&yaml_value)?;
 
     // Write the JSON to output file
-    fs::write(out_file, json_content)?;
+    fs::write(out_file, &json_content)?;
 
-    Ok(())
+    Ok(json_content)
 }
 
 /// Converts JSON content to YAML and writes it to an output file
@@ -66,7 +74,7 @@ pub fn yaml_to_json(yaml_content: &str, out_file: &str) -> Result<(), Box<dyn st
 pub fn json_to_yaml(
     json_content: &str,
     output_file: &str,
-) -> Result<(), Box<dyn std::error::Error>> {
+) -> Result<String, Box<dyn std::error::Error>> {
     // Parse JSON
     let json_value: JsonValue = serde_json::from_str(json_content)?;
 
@@ -74,7 +82,7 @@ pub fn json_to_yaml(
     let yaml_content = serde_yaml::to_string(&json_value)?;
 
     // Write the YAML output to file
-    fs::write(output_file, yaml_content)?;
+    fs::write(output_file, &yaml_content)?;
 
-    Ok(())
+    Ok(yaml_content)
 }
