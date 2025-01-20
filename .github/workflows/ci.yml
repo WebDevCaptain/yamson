@@ -29,7 +29,7 @@ jobs:
         run: cargo fmt -- --check
 
       - name: Run linter
-        uses: cargo clippy --workspace --all-targets -- -D warnings
+        run: cargo clippy --workspace --all-targets -- -D warnings
 
   test:
     runs-on: ubuntu-latest
