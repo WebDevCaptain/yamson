@@ -1,0 +1,9 @@
+{
+  "name": "Shreyash",
+  "age": 49,
+  "salary": "10K",
+  "address": {
+    "city": "Ranchi",
+    "state": "JH"
+  }
+}
