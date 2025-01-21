@@ -9,6 +9,22 @@ Yamson is structured as a workspace with `yamson` (core functionality) and `yams
 1. Convert JSON to YAML
 2. Convert YAML to JSON
 
+## Usage (CLI)
+
+```bash
+cargo run -p yamson-cli <input_file> <output_file>
+```
+
+## Testing and Benchmarking
+
+```bash
+cargo bench --workspace --all-targets
+```
+
+```bash
+cargo test --workspace --all-targets
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
