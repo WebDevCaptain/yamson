@@ -20,7 +20,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Run benchmarks
-        run: cargo bench --workspace --all-targets --verbose
+        run: cargo bench --workspace --all-targets
 
       - name: Upload benchmark results
         uses: actions/upload-artifact@v4
