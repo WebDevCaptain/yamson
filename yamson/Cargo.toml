@@ -1,7 +1,8 @@
 [package]
 name = "yamson"
-version = "1.0.0"
+version = "1.0.1"
 description = "A simple tool to convert YAML to JSON and vice versa."
+repository = "https://github.com/WebDevCaptain/yamson"
 license = "MIT"
 edition = "2021"
 
